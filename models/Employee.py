@@ -12,6 +12,7 @@ class Employee(ABC):
     def supervisors(self):
         return self.__supervisors
 
+
     def add_supervisor(self, boss):
         if boss in self.__subordinates:
             print('Cann`t add supervisor. Person is your subordinate')
@@ -26,8 +27,8 @@ class Employee(ABC):
         if self not in boss.subordinates:
             boss.add_subordinate(self)
         else:
-            print('You are already a subordinate')
             return 0
+
 
     def remove_supervisor(self, boss):
         try:
@@ -39,6 +40,7 @@ class Employee(ABC):
     @property
     def subordinates(self):
         return self.__subordinates
+
 
     def add_subordinate(self, pleb):
         if pleb in self.__supervisors:
@@ -54,14 +56,15 @@ class Employee(ABC):
         if self not in pleb.supervisors:
             pleb.add_supervisor(self)
         else:
-            print('You are already a supervisor')
             return 0
+
 
     def remove_subordinate(self, pleb):
         try:
             self.__subordinates.remove(pleb)
         except ValueError as e:
             print('no such subordinate as {}'.format(pleb))
+
 
     # Employee initializator
     @abstractmethod
@@ -76,15 +79,15 @@ class Employee(ABC):
         self.__supervisors = list()
         self.__subordinates = list()
 
+
     # Employee object string represintation
     def __str__(self):
-        """Return value for print() method"""
-
         return 'position: \t' + self.position + '\n' + \
             'first name: \t' + self.first_name + '\n' + \
             'last name: \t' + self.last_name + '\n' + \
             'birth date: \t' + self.birth_date.strftime('%Y/%m/%d')
 
+
     # Employee destructor
     def __del__(self):
-        print(self.last_name, self.first_name, 'was deleted')
+        print(self.first_name, self.last_name, 'was deleted')
