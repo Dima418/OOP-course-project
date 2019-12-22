@@ -4,8 +4,8 @@ from datetime import datetime
 
 class Employee(ABC):
 
-    __FNAMES = ['John', 'Guido', 'Tom', 'Martha', 'Jane', 'Kamile']
-    __LNAMES = ['Doe', 'Van Rossum','Aman', 'Miller', 'Turner', 'Stein']
+    _FNAMES = ['John', 'Guido', 'Tom', 'Martha', 'Jane', 'Kamile']
+    _LNAMES = ['Doe', 'Van Rossum','Aman', 'Miller', 'Turner', 'Stein']
 
     # Employee supervisors property operations
     @property
@@ -65,7 +65,7 @@ class Employee(ABC):
 
     # Employee initializator
     @abstractmethod
-    def __init__(self, first_name, last_name, birth_date):
+    def __init__(self, first_name, last_name, birth_date, **kwargs):
         self.first_name = first_name
         self.last_name = last_name
         self.birth_date = datetime.strptime(birth_date, '%Y/%m/%d').date()
