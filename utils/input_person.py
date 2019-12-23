@@ -2,6 +2,8 @@ from .make_choise import make_choise
 from .manual_input import manual_input
 from .random_input import random_input
 
+from models.Deserializer import Deserializer
+
 
 def input_person(group):
     print(
@@ -12,7 +14,8 @@ def input_person(group):
     )
     input_choise = make_choise(3)
 
-    if input_choise == 0:     # manually
+    # manually
+    if input_choise == 0:
         print(
             '\nselect class:\n' + \
             '[0] - Developer\n' + \
@@ -23,7 +26,8 @@ def input_person(group):
         person = manual_input(class_choise)
         group.add_person(person)
 
-    elif input_choise == 1:   # random
+    # random
+    elif input_choise == 1:
         print(
             '\nselect class:\n' + \
             '[0] - Developer\n' + \
@@ -34,5 +38,7 @@ def input_person(group):
         person = random_input(class_choise)
         group.add_person(person)
 
-    else:               # from file
-        pass
+    # from file
+    else:
+        des = Deserializer()
+        group.collection = des.deserialize()

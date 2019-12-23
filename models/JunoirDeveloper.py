@@ -12,11 +12,11 @@ class JunoirDeveloper(Employee):
             first_name = random.choice(self._FNAMES)
             last_name = random.choice(self._LNAMES)
 
-            stime = time.mktime(time.strptime('1984/01/01', '%Y/%m/%d'))
-            etime = time.mktime(time.strptime('1999/01/01', '%Y/%m/%d'))
+            stime = time.mktime(time.strptime('1984-01-01', '%Y-%m-%d'))
+            etime = time.mktime(time.strptime('1999-01-01', '%Y-%m-%d'))
             ptime = stime + random.random() * (etime - stime)
 
-            birth_date = time.strftime('%Y/%m/%d', time.localtime(ptime))
+            birth_date = time.strftime('%Y-%m-%d', time.localtime(ptime))
 
         Employee.__init__(self, first_name, last_name, birth_date)
 

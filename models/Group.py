@@ -1,4 +1,3 @@
-
 def print_subordinates(obj):
     subordinates = obj.subordinates
     if subordinates:
@@ -16,7 +15,6 @@ def print_subordinates(obj):
 class Group():
 
     collection = list()
-    _id = 0
 
 
     def __new__(cls):
@@ -26,9 +24,17 @@ class Group():
 
 
     def add_person(self, person):
-        obj = {'id': self._id, 'obj': person}
+        _id = 0
+        if self.collection:
+            max_id = self.collection[0]['id']
+            for item in self.collection:
+                if item['id'] > max_id:
+                    max_id = item['id']
+            _id = max_id + 1
+
+        obj = {'id': _id, 'obj': person}
         self.collection.append(obj)
-        self._id = self._id + 1
+        _id = _id + 1
 
 
     def remove_person(self, person_id):
@@ -38,7 +44,6 @@ class Group():
 
     def clear(self):
         self.collection.clear()
-        self._id = 0
 
 
     def get_all(self):

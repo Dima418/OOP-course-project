@@ -1,0 +1,33 @@
+[
+    {
+        "birth_date": "1985-01-22",
+        "first_name": "Martha",
+        "last_name": "Miller",
+        "person_class": "Developer",
+        "subordinates": [
+            {
+                "first_name": "Tom",
+                "last_name": "Aman"
+            }
+        ]
+    },
+    {
+        "birth_date": "1997-11-24",
+        "first_name": "Tom",
+        "last_name": "Aman",
+        "person_class": "JunoirDeveloper",
+        "subordinates": [
+            {
+                "first_name": "Guido",
+                "last_name": "Doe"
+            }
+        ]
+    },
+    {
+        "birth_date": "1976-12-24",
+        "first_name": "Guido",
+        "last_name": "Doe",
+        "person_class": "Manager",
+        "subordinates": []
+    }
+]

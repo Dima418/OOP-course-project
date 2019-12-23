@@ -1,3 +1,5 @@
+import json
+
 from abc import ABC, abstractmethod
 from datetime import datetime
 
@@ -71,7 +73,7 @@ class Employee(ABC):
     def __init__(self, first_name, last_name, birth_date, **kwargs):
         self.first_name = first_name
         self.last_name = last_name
-        self.birth_date = datetime.strptime(birth_date, '%Y/%m/%d').date()
+        self.birth_date = datetime.strptime(birth_date, '%Y-%m-%d').date()
         self.date_diff = (datetime.today().date() - self.birth_date).days
         self.position = type(self).__name__.lower()
         self.responsibilities = list()
@@ -85,9 +87,14 @@ class Employee(ABC):
         return 'position: \t' + self.position + '\n' + \
             'first name: \t' + self.first_name + '\n' + \
             'last name: \t' + self.last_name + '\n' + \
-            'birth date: \t' + self.birth_date.strftime('%Y/%m/%d')
+            'birth date: \t' + self.birth_date.strftime('%Y-%m-%d')
 
 
     # Employee destructor
     def __del__(self):
         print(self.first_name, self.last_name, 'was deleted')
+
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
