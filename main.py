@@ -1,28 +1,45 @@
-from models.Developer import Developer
-from models.Manager import Manager
+from utils.make_choise import make_choise
+from utils.input_person import input_person
+from utils.view_age import view_age
+from utils.add_subordinate import add_subordinate
+from utils.view_subordinates import view_subordinates
+
 from models.Group import Group
 
 
 def main():
-    dev = Developer('dev_fn_1', 'dev_ln_1', '1990/12/01')
-    dev2 = Developer('dev_fn_2', 'dev_ln_2', '1999/10/01')
-    dev3 = Developer(rnd=True)
-    dev4 = Developer(rnd=True)
-    dev5 = Developer(rnd=True)
-    
-    man1 = Manager(rnd=True)
+    group = Group()
 
-    g = Group()
-    g.add_person_to_collection(dev)
-    g.add_person_to_collection(dev2)
-    g.add_person_to_collection(dev3)
-    g.add_person_to_collection(dev4)
-    g.add_person_to_collection(dev5)
-    g.add_person_to_collection(man1)
-    
-    g.get_all_collection_items()
+    while True:
+        print(
+            '\n\nselect action:\n' + \
+            '[0] - insert person\n' + \
+            '[1] - view group collection\n' + \
+            '[2] - view min & max age of person from category\n' + \
+            '[3] - add subordinate to the person\n' + \
+            '[4] - view subordinates of the person\n' + \
+            '[5] - save current group collection ti the file\n' + \
+            '[6] - exit\n'
+        )
+        choise = make_choise(7)
+        
+        if choise == 0:
+            input_person(group)
 
-    g.print_category_ages('Developer')
+        elif choise == 1:
+            group.get_all()
+
+        elif choise == 2:
+            view_age(group)
+
+        elif choise == 3:
+            add_subordinate(group)
+
+        elif choise == 4:
+            view_subordinates(group)
+
+        else:
+            break
 
 
 if __name__ == "__main__":

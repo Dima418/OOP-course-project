@@ -1,0 +1,20 @@
+[
+    {
+        "class_name": "Developer",
+        "first_name": "Alex",
+        "last_name": "Tenison",
+        "birth_date": "1992/03/09"
+    },
+    {
+        "class_name": "Developer",
+        "first_name": "Peeter",
+        "last_name": "Parker",
+        "birth_date": "1980/11/21"
+    },
+    {
+        "class_name": "Manager",
+        "first_name": "Dart",
+        "last_name": "Vader",
+        "birth_date": "1975/06/10"
+    }
+]

@@ -25,42 +25,36 @@ class Group():
         return cls.instance
 
 
-    def add_person_to_collection(self, person):
+    def add_person(self, person):
         obj = {'id': self._id, 'obj': person}
         self.collection.append(obj)
         self._id = self._id + 1
 
 
-    def remove_person_from_collection(self, person_id):
+    def remove_person(self, person_id):
         for person in self.collection:
             if person['id'] == person_id:
                 self.collection.remove(person)
 
-    def clear_collection(self):
+    def clear(self):
         self.collection.clear()
         self._id = 0
 
 
-    def get_all_collection_classes(self):
-        classes = set()
+    def get_all(self):
+        print('-------------------------')
+        if self.collection is not None:
+            for person in self.collection:
+                print('id: \t[{}]'.format(person['id']))
+                print(person['obj'])
+                print()
+        else:
+            print('Group is empty\n')
 
+
+    def print_person_subordinates(self, person_id):
         for person in self.collection:
-            person_class_name = type(person['obj']).__name__
-            classes.add(person_class_name)
-
-        return classes
-
-
-    def get_all_collection_items(self):
-        for person in self.collection:
-            print('id: \t[{}]'.format(person['id']))
-            print(person['obj'])
-            print()
-
-
-    def print_person_info(self, person_id):
-        for person in self.collection:
-            if person['id'] == person_id:
+            if person['id'] == int(person_id):
                 print('-------------------------')
                 print(person['obj'])
                 print('_________________________')
@@ -68,7 +62,7 @@ class Group():
                 print('-------------------------\n')
 
 
-    def print_category_ages(self, category):
+    def print_ages_of_category(self, category):
         categorized_persons = list()
 
         for person in self.collection:
