@@ -1,17 +1,3 @@
-def print_subordinates(obj):
-    subordinates = obj.subordinates
-    if subordinates:
-        print('\nsubordinates of {} {}:'.format(obj.first_name, obj.last_name))
-        for sub in subordinates:
-            print('- ' + sub.first_name + ' ' + sub.last_name)
-            print_subordinates(sub)
-
-    else:
-        print('\n{} {} has no subordinates \n'.format(obj.first_name, obj.last_name))
-        print('_________________________')
-        return 0
-
-
 class Group():
 
     collection = list()
@@ -42,6 +28,7 @@ class Group():
             if person['id'] == person_id:
                 self.collection.remove(person)
 
+
     def clear(self):
         self.collection.clear()
 
@@ -63,8 +50,8 @@ class Group():
                 print('-------------------------')
                 print(person['obj'])
                 print('_________________________')
-                print_subordinates(person['obj'])
-                print('-------------------------\n')
+                self.print_subordinates(person['obj'])
+                print('-------------------------')
 
 
     def print_ages_of_category(self, category):
@@ -90,3 +77,17 @@ class Group():
             print('\n')
         else:
             print('\n No person found in such category')
+
+
+    def print_subordinates(self, obj):
+        subordinates = obj.subordinates
+        if subordinates:
+            print('\nsubordinates of {} {}:'.format(obj.first_name, obj.last_name))
+            for sub in subordinates:
+                print('- ' + sub.first_name + ' ' + sub.last_name)
+                self.print_subordinates(sub)
+
+        else:
+            print('\n{} {} has no subordinates \n'.format(obj.first_name, obj.last_name))
+            print('_________________________')
+            return 0

@@ -2,9 +2,9 @@ import json
 
 from utils.make_choise import make_choise
 from utils.input_person import input_person
-from utils.view_age import view_age
 from utils.add_subordinate import add_subordinate
 from utils.view_subordinates import view_subordinates
+from utils.view_age import view_age
 
 from models.Group import Group
 from models.Serializer import Serializer

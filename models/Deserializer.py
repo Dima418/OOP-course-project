@@ -5,12 +5,6 @@ from models.Manager import Manager
 from models.JunoirDeveloper import JunoirDeveloper
 
 
-def find_person(collection, fn, ln):
-    for person in collection:
-        if person['obj'].first_name == fn and person['obj'].last_name == ln:
-            return person['obj']
-
-
 class Deserializer():
 
     def deserialize(self):
@@ -57,8 +51,14 @@ class Deserializer():
                     for sub in objects_subs['subs']:
                         sub_fn = sub['first_name']
                         sub_ln = sub['last_name']
-                        person = find_person(objects_list, sub_fn, sub_ln)
+                        person = self.find_person(objects_list, sub_fn, sub_ln)
 
                         obj['obj'].add_subordinate(person)
 
         return objects_list
+
+
+    def find_person(self, collection, fn, ln):
+        for person in collection:
+            if person['obj'].first_name == fn and person['obj'].last_name == ln:
+                return person['obj']
